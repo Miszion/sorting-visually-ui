@@ -6,7 +6,7 @@ import { Line } from "@/models/Line";
 
 export const LinePanel: React.FC = () => {
     const [lineList, setLineList] = useState<Line[]>([]);
-    const [windowWidth, setWindowWidth] = useState<number>();
+    const [, setWindowWidth] = useState<number>();
     const [isPartiallySorted, setIsPartiallySorted] = useState<boolean>(false);
     const [isSorted, setIsSorted] = useState<boolean>(false);
 
@@ -16,11 +16,9 @@ export const LinePanel: React.FC = () => {
         setLineList(array);
 
         function handleResize() {
-            if (!isPartiallySorted) {
-                const array = createArray(window.innerWidth);
-                setWindowWidth(window.innerWidth);
-                setLineList(array);
-            }
+            const array = createArray(window.innerWidth);
+            setWindowWidth(window.innerWidth);
+            setLineList(array);
         }
 
         window.addEventListener('resize', handleResize);
@@ -52,7 +50,6 @@ export const LinePanel: React.FC = () => {
                         if (isSorted) {
                             setLineList(randomizeArray(lineList))
                         }
-                        setLineList(randomizeArray(lineList))
                         await quickSort(lineList, 0, lineList.length - 1, setLineList, setIsPartiallySorted)
                         setIsSorted(true);
                     }
@@ -62,7 +59,6 @@ export const LinePanel: React.FC = () => {
                         if (isSorted) {
                             setLineList(randomizeArray(lineList))
                         }
-                        setLineList(randomizeArray(lineList))
                         await mergeSort(lineList, lineList.length, setLineList, setIsPartiallySorted)
                         setIsSorted(true);
                     }
@@ -72,7 +68,6 @@ export const LinePanel: React.FC = () => {
                         if (isSorted) {
                             setLineList(randomizeArray(lineList))
                         }
-                        setLineList(randomizeArray(lineList))
                         await selectionSort(lineList, setLineList, setIsPartiallySorted)
                         setIsSorted(true);
                     }

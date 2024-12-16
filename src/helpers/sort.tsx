@@ -5,7 +5,7 @@ import { sleep } from './functions';
 export const partition = async (lineList: Line[], low: number, high: number, setLineList: Dispatch<SetStateAction<Line[]>>) => {
     const pivot = lineList[high].height;
     let i = (low - 1);
-    
+
     for (let j = low; j < high; j++) {
         if (lineList[j].height < pivot) {
             i++;
@@ -37,8 +37,8 @@ export const mergeSort = async (lineList: Line[], n: number, setLineList: Dispat
 
     for (curr_size = 1; curr_size <= n - 1; curr_size = 2 * curr_size) {
         for (left_start = 0; left_start < n - 1; left_start += 2 * curr_size) {
-            let mid = Math.min(left_start + curr_size - 1, n - 1);
-            let right_end = Math.min(left_start + 2 * curr_size - 1, n - 1);
+            const mid = Math.min(left_start + curr_size - 1, n - 1);
+            const right_end = Math.min(left_start + 2 * curr_size - 1, n - 1);
             await merge(lineList, left_start, mid, right_end, setLineList);
         }
     }
@@ -47,11 +47,11 @@ export const mergeSort = async (lineList: Line[], n: number, setLineList: Dispat
 
 const merge = async (lineList: Line[], l: number , m: number, r: number, setLineList: Dispatch<SetStateAction<Line[]>>) => {
     let i, j, k;
-    let n1 = m - l + 1;
-    let n2 = r - m;
+    const n1 = m - l + 1;
+    const n2 = r - m;
 
-    let L = Array(n1).fill(0);
-    let R = Array(n2).fill(0);
+    const L = Array(n1).fill(0);
+    const R = Array(n2).fill(0);
 
     for (i = 0; i < n1; i++)
         L[i] = lineList[l + i];
